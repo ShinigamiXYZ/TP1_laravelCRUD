@@ -3,9 +3,6 @@
 
 ### commands 
 
-
-- 
-
 1. #### En utilisant les lignes de commande, créer un nouveau projet Laravel nommée Maisonneuve{votre matricule} (1 pt)
 ```
   - composer create-project --prefer-dist laravel/laravel Maisonneuve{e2295344}
@@ -13,7 +10,12 @@
 ```
 
 1. En utilisant les lignes de commande, créer les modèles (2 pts)
+```
+php artisan make:model Student
+php artisan make:model Town
 
+
+```
 
 
 2. En utilisant les lignes de commande, créer les tables (2 pts)
