@@ -19,6 +19,44 @@ php artisan make:model Town
 
 
 2. En utilisant les lignes de commande, créer les tables (2 pts)
+
+
+```
+php artisan make:migration create_town_table --create=towns
+php artisan make:migration create_student_table --create=students
+
+```
+Ensuite dans database/migrations -> ajout et définitions des columns
+
+Towns
+```
+  public function up()
+    {
+        Schema::create('towns', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+```
+Students
+```
+$table->id();
+    $table->string('name');
+    $table->string('address');
+    $table->string('phone');
+    $table->string('email');
+    $table->year('year_of_birth');
+    $table->unsignedBigInteger('town_id');
+    $table->foreign('town_id')->references('id')->on('towns');
+    $table->timestamps();
+```
+
+Conclue le tout avec la commande 
+```
+php artisan migrate
+```
+
 3. En utilisant les lignes de commande, saisir 15 nouvelles villes (1 pts)
 4. En utilisant les lignes de commande, saisir 100 nouveaux étudient (1 pts)
 Pour les questions 4 et 5, effectuez une recherche des propriétés de "Factory" pour remplir des valeurs telles que des noms, des adresses, des téléphones, etc. (pas de phrases ou de texte aléatoires).
