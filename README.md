@@ -58,6 +58,47 @@ php artisan migrate
 ```
 
 3. En utilisant les lignes de commande, saisir 15 nouvelles villes (1 pts)
+
+Premièrement, créations de database/factories/TownFactory.php
+```
+php artisan make:factory TownFactory --model=Town
+```
+
+Ensuite a l'intérieur de database/factories/TownFactory.php utilsations de Faker
+Basé sur -> https://github.com/fzaninotto/Faker#language-specific-formatters
+```
+  <?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
+use Faker\Provider\fr_CA\Address as FrCaAddress;
+
+
+class TownFactory extends Factory
+{
+    
+    public function definition()
+    {
+        $faker = FakerFactory::create('fr_CA');
+        $faker->addProvider(new FrCaAddress($faker));
+
+        return [
+            'name' => $faker->city
+        ];
+    }
+}
+
+```
+Finalement a partir du tinker shell de laravel on creer 15 nouvelles villes
+
+```
+php artisan tinker
+\App\Models\Town::factory()->count(15)->create();
+
+
+```
 4. En utilisant les lignes de commande, saisir 100 nouveaux étudient (1 pts)
 Pour les questions 4 et 5, effectuez une recherche des propriétés de "Factory" pour remplir des valeurs telles que des noms, des adresses, des téléphones, etc. (pas de phrases ou de texte aléatoires).
 1. En utilisant les lignes de commande, créer les contrôleurs (2 pts)
