@@ -1,66 +1,170 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TP1_laravelCRUD
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+### commands 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. #### En utilisant les lignes de commande, créer un nouveau projet Laravel nommée Maisonneuve{votre matricule} (1 pt)
+```
+  - composer create-project --prefer-dist laravel/laravel Maisonneuve{e2295344}
+  - <!-- adding bootstrap -->composer require twbs/bootstrap
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. En utilisant les lignes de commande, créer les modèles (2 pts)
+```
+php artisan make:model Student
+php artisan make:model Town
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. En utilisant les lignes de commande, créer les tables (2 pts)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+```
+php artisan make:migration create_town_table --create=towns
+php artisan make:migration create_student_table --create=students
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+Ensuite dans database/migrations -> ajout et définitions des columns
 
-### Premium Partners
+Towns
+```
+  public function up()
+    {
+        Schema::create('towns', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+```
+Students
+```
+$table->id();
+    $table->string('name');
+    $table->string('address');
+    $table->string('phone');
+    $table->string('email');
+    $table->year('year_of_birth');
+    $table->unsignedBigInteger('town_id');
+    $table->foreign('town_id')->references('id')->on('towns');
+    $table->timestamps();
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Conclue le tout avec la commande 
+```
+php artisan migrate
+```
 
-## Contributing
+3. En utilisant les lignes de commande, saisir 15 nouvelles villes (1 pts)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Premièrement, créations de database/factories/TownFactory.php
+```
+php artisan make:factory TownFactory --model=Town
+```
 
-## Code of Conduct
+Ensuite a l'intérieur de database/factories/TownFactory.php utilsations de Faker
+Basé sur -> https://github.com/fzaninotto/Faker#language-specific-formatters
+```
+  <?php
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+namespace Database\Factories;
 
-## Security Vulnerabilities
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
+use Faker\Provider\fr_CA\Address as FrCaAddress;
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+class TownFactory extends Factory
+{
+    
+    public function definition()
+    {
+        $faker = FakerFactory::create('fr_CA');
+        $faker->addProvider(new FrCaAddress($faker));
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        return [
+            'name' => $faker->city
+        ];
+    }
+}
+
+```
+Finalement a partir du tinker shell de laravel on creer 15 nouvelles villes
+
+```
+php artisan tinker
+\App\Models\Town::factory()->count(15)->create();
+
+
+```
+4. En utilisant les lignes de commande, saisir 100 nouveaux étudient (1 pts)
+  Premièrement, créations de database/factories/TownFactory.php
+```
+php artisan make:factory StudentFactory --model=App\Models\Student
+``` 
+Ensuite a l'intérieur de database/factories/StudentFactory.php utilsations de Faker
+Basé sur -> https://github.com/fzaninotto/Faker#language-specific-formatters
+```
+namespace Database\Factories;
+use App\Models\Student;
+use App\Models\Town;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
+use Faker\Provider\fr_CA\Address;
+use Faker\Provider\en_CA\PhoneNumber;
+use Faker\Provider\fr_CA\Person;
+
+
+class StudentFactory extends Factory
+{
+    
+    public function definition()
+    {
+        $fakeName = FakerFactory::create('fr_CA');
+        $fakeName->addProvider(new Person($fakeName));
+        $name = $fakeName->name;/* Tour de passe passe pour avoir des courriels representatifs */
+
+        $fakerAddress = FakerFactory::create('fr_CA');
+        $fakerAddress->addProvider(new Address($fakerAddress));
+        
+        $fakePhone = FakerFactory::create('en_CA'); // N'accepte pas fr pour phone
+        $fakePhone->addProvider(new PhoneNumber($fakePhone));
+        
+
+        return [
+            'name' =>  $name ,
+            'address' => $fakerAddress->address,
+            'phone' => $fakePhone->phoneNumber,
+            'email' => strtolower(str_replace(' ', '', $name)).'@gmail.com',  /* Tour de passe passe pour avoir des courriels representatifs */
+            'year_of_birth' => $fakeName->numberBetween(1950, 2022),
+            'town_id' => Town::inRandomOrder()->first()->id,
+
+        ];
+    }
+}
+
+
+```
+Finalement a partir du tinker shell de laravel on creer 100 nouveau étudiant
+
+```
+php artisan tinker
+\App\Models\Student::factory()->count(100)->create();
+
+```
+Pour les questions 4 et 5, effectuez une recherche des propriétés de "Factory" pour remplir des valeurs telles que des noms, des adresses, des téléphones, etc. (pas de phrases ou de texte aléatoires).
+1. En utilisant les lignes de commande, créer les contrôleurs (2 pts)
+2. Créez votre layout.blade avec vous CSS, vous devez importer bootstrap (ou du CSS personnalise) et le concevoir selon vos préférences. (2 pts)
+3. Travailler avec bootstrap (ou du CSS personnalise) pour respecter les concepts d'ergonomie, soyez créatif (2pts).
+4. Créer un contrôleur “index” et une vue, pour afficher tous les étudiants, avec un lien pour sélectionner l'étudiant et le mettre à jour. (2 pts)
+3
+Conception et programmation de sites Web (NWE.0F – 2020)
+582-41B-MA – Cadriciel Web
+1.  Créer un contrôleur “create” et une vue, pour saisir un nouvel étudiant. Le formulaire doit avoir un champ “select” avec toutes les villes qui viennent de la base de données. (2 pts)
+2.  Créer un contrôleur “show” et une vue, pour afficher un étudiant sélectionné. (2 pts)
+3.  Créer un contrôleur “edit” et une vue, pour afficher un étudiant sélectionné dans un formulaire et le mettre à jour. (2 pts)
+4.  Créer un contrôleur “destroy” pour supprimer un étudiant sélectionné. (1 pt)
+5.  Publier votre projet dans GitHub (publique) et envoyer le lien dans la documentation. (2 pts)
+6.  Enregistrez le projet avec une extension ZIP et ajouter la documentation dans la racine (1pt)
