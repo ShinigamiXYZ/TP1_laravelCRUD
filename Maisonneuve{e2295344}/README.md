@@ -163,12 +163,29 @@ php artisan make:controller StudentController
 php artisan make:controller TownController
 ```
 1.  #### Créez votre layout.blade avec vous CSS, vous devez importer bootstrap (ou du CSS personnalise) et le concevoir selon vos préférences. (2 pts)
-2.  #### Travailler avec bootstrap (ou du CSS personnalise) pour respecter les concepts d'ergonomie, soyez créatif (2pts).
-3.  #### Créer un contrôleur “index” et une vue, pour afficher tous les étudiants, avec un lien pour sélectionner l'étudiant et le mettre à jour. (2 pts)
+   
+Creation du master.blade.php qui servira de layout statique pour mes vues.
+Ajout rapide via CDN
 
-1. ####   Créer un contrôleur “create” et une vue, pour saisir un nouvel étudiant. Le formulaire doit avoir un champ “select” avec toutes les villes qui viennent de la base de données. (2 pts)
-2. ####  Créer un contrôleur “show” et une vue, pour afficher un étudiant sélectionné. (2 pts)
-3. ####  Créer un contrôleur “edit” et une vue, pour afficher un étudiant sélectionné dans un formulaire et le mettre à jour. (2 pts)
-4. ####  Créer un contrôleur “destroy” pour supprimer un étudiant sélectionné. (1 pt)
-5. ####  Publier votre projet dans GitHub (publique) et envoyer le lien dans la documentation. (2 pts)
-6.  #### #### Enregistrez le projet avec une extension ZIP et ajouter la documentation dans la racine (1pt)
+```
+CSS
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"  crossorigin="anonymous" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" rel="stylesheet" >
+
+ JS
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+```
+
+Ensuite creation du master.blade.php qui servira de layout statique pour mes vues.
+
+1.  #### Travailler avec bootstrap (ou du CSS personnalise) pour respecter les concepts d'ergonomie, soyez créatif (2pts).
+2.  #### Créer un contrôleur “index” et une vue, pour afficher tous les étudiants, avec un lien pour sélectionner l'étudiant et le mettre à jour. (2 pts)
+
+3. ####   Créer un contrôleur “create” et une vue, pour saisir un nouvel étudiant. Le formulaire doit avoir un champ “select” avec toutes les villes qui viennent de la base de données. (2 pts)
+4. ####  Créer un contrôleur “show” et une vue, pour afficher un étudiant sélectionné. (2 pts)
+5. ####  Créer un contrôleur “edit” et une vue, pour afficher un étudiant sélectionné dans un formulaire et le mettre à jour. (2 pts)
+6. ####  Créer un contrôleur “destroy” pour supprimer un étudiant sélectionné. (1 pt)
+7. ####  Publier votre projet dans GitHub (publique) et envoyer le lien dans la documentation. (2 pts)
+8.  #### #### Enregistrez le projet avec une extension ZIP et ajouter la documentation dans la racine (1pt)
