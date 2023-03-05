@@ -29,10 +29,15 @@ class StudentController extends Controller
 
     }
 
-    public function update(Request $request, Student $student)
+    public function update(Request $request)
     {
-        $student->update($request->only(['name', 'address', 'phone', 'email', 'year_of_birth', 'town_id']));
-    
-        return redirect()->route('main.show', $request->only('id'));
+       
+        $student = Student::findOrFail($request->id);
+     
+        $student->update($request->only(['name', 'address' , 'phone', 'email', 'year_of_birth', 'town_id']));
+        /* voir pk adress de passe pas. */
+        return redirect(route('main.show', $request->id))->withSuccess('Informations mis a jour');
+       
+        
     }
 }
