@@ -75,11 +75,14 @@
             
         </form>
 
-        <form method="POST">
+        <form method="POST" action="{{ route('main.delete', $student->id ) }}">
             @csrf
             @method('DELETE')
-
-            <button type="submit" class="btn btn-danger mt-3" onclick="return confirm('Are you sure you want to delete this student?')">Delete</button>
+            <div class="d-none">
+            <label for="name">Id</label>
+                <input type="text" class="form-control" id="id" name="id" value="{{ $student->id }}">
+            </div>
+            <button type="submit">Delete</button>
         </form>
     </div>
 

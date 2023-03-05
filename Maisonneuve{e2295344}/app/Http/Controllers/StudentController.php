@@ -40,4 +40,15 @@ class StudentController extends Controller
        
         
     }
+    public function destroy(Request $request)
+    {
+       
+        $student = Student::find($request->id);
+       
+        $student::destroy([$request->id]);
+      
+        return redirect(route('main.index'))->withSuccess('utilisateur supprimer');
+       
+        
+    }
 }

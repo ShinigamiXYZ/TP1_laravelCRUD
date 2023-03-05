@@ -20,3 +20,4 @@ Route::get('/', [StudentController::class, 'index'])->name('main.index');
 Route::get('student/{studentId}', [StudentController::class, 'show'])->name('main.show');
 Route::get('edit/{studentId}', [StudentController::class, 'edit'])->name('main.edit');
 Route::put('edit/{studentId}', [StudentController::class, 'update'])->name('main.update');
+ Route::delete('edit/{studentId}', [StudentController::class, 'destroy'])->name('main.delete'); 

@@ -6,6 +6,12 @@
 
 <div class="container">
     <h1>Student List</h1>
+    @if(session('success'))
+                <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                    <strong>{{session('success')}}</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
     
     <div class="row">
         @foreach($studentList as $student)
