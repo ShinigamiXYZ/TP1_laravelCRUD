@@ -37,6 +37,7 @@ class StudentFactory extends Factory
             'address' => $fakerAddress->address,
             'phone' => $fakePhone->phoneNumber,
             'email' => strtolower(str_replace(' ', '', $name)).'@gmail.com',  /* Tour de passe passe pour avoir des courriels representatifs */
+            /* Idealement ajouter regex pour enlever tout types d'accents */
             'year_of_birth' => $fakeName->numberBetween(1950, 2022),   
             'town_id' => Town::inRandomOrder()->first()->id,
 

@@ -82,6 +82,7 @@
             <label for="name">Id</label>
                 <input type="text" class="form-control" id="id" name="id" value="{{ $student->id }}">
             </div>
+            
             <button type="submit">Delete</button>
         </form>
     </div>
