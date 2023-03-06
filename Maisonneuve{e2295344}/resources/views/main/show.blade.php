@@ -8,7 +8,7 @@
                 </div>
                 @endif
    
-
+<div><a href="{{route('main.index')}}" class="btn btn-success">Retour</a></div>
     <div class="container flex pt-20">
         <div class="card mb-3 text-center">
             <div class="card-body">
