@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container flex pt-20">
-   
+    <div><a href="{{route('main.show', $student -> id )}}" class="btn btn-success">Retour</a></div>
         <form method="POST">
             @csrf
             @method('PUT')
