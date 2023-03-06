@@ -5,7 +5,11 @@
 
 
 <div class="container">
+    
     <h1>Student List</h1>
+    <div><a href="{{route('main.create')}}"class="btn btn-info">
+        Ajout 
+    </a></div>
     @if(session('success'))
                 <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
                     <strong>{{session('success')}}</strong> 

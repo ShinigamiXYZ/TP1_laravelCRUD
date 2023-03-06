@@ -16,6 +16,23 @@ class StudentController extends Controller
         
     }
 
+    public function create(){
+
+        return view('main.create');
+    }
+    public function store(Request $request){
+      
+        $data = $request->only(['name', 'address' , 'phone', 'email', 'year_of_birth', 'town_id']);
+        
+     
+        $student = Student::create($data);
+    
+        return redirect(route('main.show', $student->id))->withSuccess('Student created successfully.'); 
+    }
+
+
+
+
     public function show($studentId)
     {
         $student = Student::findOrFail($studentId);
