@@ -2,52 +2,60 @@
 @section('title', 'student')
 @section('content')
 
-    <div class="container flex pt-20">
+<div class="container py-5">
+<h1 class="text-center mt-5 mb-4 text-success">Creation utilisateur</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form method="POST">
+        @csrf
+        @method('PUT')
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
+        </div>
+
+        <div class="form-group">
+          <label for="year_of_birth">Year of Birth:</label>
+          <input type="text" class="form-control" id="year_of_birth" name="year_of_birth" placeholder="Enter your year of birth">
+        </div>
+
+        <div class="form-group">
+          <label for="town_id">Town ID:</label>
+          <input type="text" class="form-control" id="town_id" name="town_id" placeholder="Enter your town ID">
+        </div>
+
+
+
    
-        <form method="POST">
-            @csrf
-            @method('PUT')
-            <div class="d-none">
-            <label for="id">Id</label>
-                <input type="text" class="form-control" id="id" name="id" value="}">
-            </div>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" value="">
-            </div>
 
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ $student->address ?? '' }}">
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="">
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" value="">
-            </div>
-
-            <div class="form-group">
-                <label for="year_of_birth">Year of Birth:</label>
-                <input type="text" class="form-control" id="year_of_birth" name="year_of_birth" value="">
-            </div>
-
-            <div class="form-group">
-                <label for="town_id">Town ID:</label>
-                <input type="text" class="form-control" id="town_id" name="town_id" value="">
-            </div>
+   
+  
 <!-- 
     MODAL - BOOTSTRAP - UPDATE CONFIRMATION
 
  -->
  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-  Creation
-</button>
+<div class="container text-center pt-3">
+  <button type="button" class="btn btn-primary px-2" data-toggle="modal" data-target="#create">
+    Creation
+  </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="createLabel" aria-hidden="true">
@@ -69,7 +77,10 @@
     </div>
   </div>
 </div>
-
+</form>
+    </div>
+  </div>
+</div>
     </div>
 
 @endsection
