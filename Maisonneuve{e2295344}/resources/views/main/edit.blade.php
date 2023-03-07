@@ -1,11 +1,12 @@
 @extends('layout.master')
 @section('title', 'student')
 @section('content')
-
-    <div class="container py-5">
-    <div><a href="{{route('main.show', $student -> id )}}" class="btn btn-success">Retour</a></div>
-    <div class="col-md-6">   
-    <form method="POST">
+<div class="text-center mt-2"><a href="{{route('main.show', $student -> id )}}" class="btn btn-success">Retour</a></div>
+<div class="container py-5">
+<h1 class="text-center mt-5 mb-4 ">Modififications utilisateur</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form method="POST">
             @csrf
             @method('PUT')
             <div class="d-none">
@@ -54,9 +55,11 @@
 
  -->
  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">
-  Update
-</button>
+<div class="container text-center pt-3">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">
+    Update
+  </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
@@ -97,10 +100,12 @@
     MODAL - BOOTSTRAP - DeleteCONFIRMATION
 
  -->
+ <div class="container text-center pt-3">
  <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">
   delete
 </button>
+ </div>
 
 <!-- Modal -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
@@ -113,7 +118,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Voulez-vous vraiment modifier les informations?
+        Voulez-vous vraiment supprimer cette utilisateur?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

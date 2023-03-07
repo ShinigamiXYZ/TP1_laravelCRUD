@@ -1,9 +1,9 @@
 @extends('layout.master')
 @section('title', 'student')
 @section('content')
-
+<div class="text-center mt-2"><a href="{{route('main.index')}}" class="btn btn-success ">Retour</a></div>
 <div class="container py-5">
-<h1 class="text-center mt-5 mb-4 text-success">Creation utilisateur</h1>
+<h1 class="text-center mt-5 mb-4 ">Création utilisateur</h1>
   <div class="row justify-content-center">
     <div class="col-md-6">
       <form method="POST">
@@ -55,7 +55,7 @@
  <!-- Button trigger modal -->
 <div class="container text-center pt-3">
   <button type="button" class="btn btn-primary px-2" data-toggle="modal" data-target="#create">
-    Creation
+    Création
   </button>
 </div>
 
@@ -64,7 +64,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="createLabel">Creation étudiant</h5>
+        <h5 class="modal-title" id="createLabel">Création étudiant</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -9,28 +9,42 @@
                 @endif
    
                 <div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card text-center shadow-sm">
+  <div class="row justify-content-center ">
+    <div class="col-md-6 ">
+      <div class="card text-center shadow-lg">
         <div class="card-body">
-          <h5 class="card-title">{{ $student->name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Address:</h6>
-          <p class="card-text">{{ $student->address }}</p>
-          <h6 class="card-subtitle mb-2 text-muted">Phone:</h6>
-          <p class="card-text">{{ $student->phone }}</p>
-          <h6 class="card-subtitle mb-2 text-muted">Email:</h6>
-          <p class="card-text">{{ $student->email }}</p>
-          <h6 class="card-subtitle mb-2 text-muted">Year of Birth:</h6>
-          <p class="card-text">{{ $student->year_of_birth }}</p>
-          <h6 class="card-subtitle mb-2 text-muted">Town ID:</h6>
-          @foreach($towns as $town)
-    @if($town->id == $student->town_id)
-        <p class="card-text">{{ $town->name }}</p>
-    @endif
-@endforeach
-          <a href="{{route('main.edit', $student -> id )}}" class="btn btn-primary btn-block mt-4  py-2">Edit</a>
+          <h3 class="card-title">{{ $student->name }}</h3>
+          <div class="card-subtitle mb-2 text-muted">
+            <h6>Address:</h6>
+            <p>{{ $student->address }}</p>
+          </div>
+          <div class="card-subtitle mb-2 text-muted">
+            <h6>Phone:</h6>
+            <p>{{ $student->phone }}</p>
+          </div>
+          <div class="card-subtitle mb-2 text-muted">
+            <h6>Email:</h6>
+            <p>{{ $student->email }}</p>
+          </div>
+          <div class="card-subtitle mb-2 text-muted">
+            <h6>Year of Birth:</h6>
+            <p>{{ $student->year_of_birth }}</p>
+          </div>
+          <div class="card-subtitle mb-2 text-muted">
+            <h6>Town:</h6>
+            @foreach($towns as $town)
+              @if($town->id == $student->town_id)
+                <p>{{ $town->name }}</p>
+              @endif
+            @endforeach
+          </div>
+          <a href="{{route('main.edit', $student->id)}}" class="btn btn-primary btn-block mt-4  py-2">Edit Profile</a>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
 
       <div class="d-flex justify-content-center mt-4">
         <a href="{{route('main.index')}}" class="btn btn-success btn-lg px-5">Retour</a>
