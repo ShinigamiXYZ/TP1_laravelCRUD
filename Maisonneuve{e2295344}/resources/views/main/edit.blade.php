@@ -38,9 +38,17 @@
             </div>
 
             <div class="form-group">
-                <label for="town_id">Town ID:</label>
-                <input type="text" class="form-control" id="town_id" name="town_id" value="{{ $student->town_id }}">
-            </div>
+    <label for="town_id">Select Town:</label>
+    <select class="form-control" id="town_id" name="town_id">
+        @foreach($towns as $town)
+            @if($town->id == $student->town_id)
+                <option value="{{ $town->id }}" selected>{{ $town->name }}</option>
+            @else
+                <option value="{{ $town->id }}">{{ $town->name }}</option>
+            @endif
+        @endforeach
+    </select>
+</div>
 <!-- 
     MODAL - BOOTSTRAP - UPDATE CONFIRMATION
 

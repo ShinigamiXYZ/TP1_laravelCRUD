@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
-
+use App\Models\Town;
 class StudentController extends Controller
 {
     public function index()
@@ -17,8 +17,9 @@ class StudentController extends Controller
     }
 
     public function create(){
+        $towns = Town::all();
 
-        return view('main.create');
+        return view('main.create', ['towns'=>$towns]);
     }
     public function store(Request $request){
       
@@ -35,14 +36,16 @@ class StudentController extends Controller
 
     public function show($studentId)
     {
+        $towns = Town::all();
         $student = Student::findOrFail($studentId);
         
-        return view('main.show', compact('student')); // == ['student' => $student]); Si on veu que la clef soit identique a la variable compact est une variation
+        return view('main.show', compact('student','towns')); // == ['student' => $student]); Si on veu que la clef soit identique a la variable compact est une variation
     }
 
     public function edit($studentId){
+        $towns = Town::all();
         $student = Student::findOrFail($studentId);
-        return view('main.edit', compact('student')); // == ['student' => $student]); Si on veu que la clef soit identique a la variable compact est une variation
+        return view('main.edit', compact('student','towns')); // == ['student' => $student]); Si on veu que la clef soit identique a la variable compact est une variation
 
     }
 

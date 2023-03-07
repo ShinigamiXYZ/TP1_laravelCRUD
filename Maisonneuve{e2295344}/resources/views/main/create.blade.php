@@ -34,15 +34,17 @@
           <label for="year_of_birth">Year of Birth:</label>
           <input type="text" class="form-control" id="year_of_birth" name="year_of_birth" placeholder="Enter your year of birth">
         </div>
-
         <div class="form-group">
-          <label for="town_id">Town ID:</label>
-          <input type="text" class="form-control" id="town_id" name="town_id" placeholder="Enter your town ID">
-        </div>
+    <label for="town_id">Select Town:</label>
+    <select class="form-control" id="town_id" name="town_id">
+        @foreach($towns as $town)
+            <option value="{{ $town->id }}">{{ $town->name }}</option>
+        @endforeach
+    </select>
 
 
 
-   
+
 
    
   

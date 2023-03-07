@@ -23,7 +23,11 @@
           <h6 class="card-subtitle mb-2 text-muted">Year of Birth:</h6>
           <p class="card-text">{{ $student->year_of_birth }}</p>
           <h6 class="card-subtitle mb-2 text-muted">Town ID:</h6>
-          <p class="card-text">{{ $student->town_id }}</p>
+          @foreach($towns as $town)
+    @if($town->id == $student->town_id)
+        <p class="card-text">{{ $town->name }}</p>
+    @endif
+@endforeach
           <a href="{{route('main.edit', $student -> id )}}" class="btn btn-primary btn-block mt-4  py-2">Edit</a>
         </div>
       </div>
