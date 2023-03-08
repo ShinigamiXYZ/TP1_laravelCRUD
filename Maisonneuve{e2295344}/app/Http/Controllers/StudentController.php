@@ -24,7 +24,7 @@ class StudentController extends Controller
     public function store(Request $request){
       
         $data = $request->only(['name', 'address' , 'phone', 'email', 'year_of_birth', 'town_id']);
-        
+        /* Ajout de validation + tard */
      
         $student = Student::create($data);
     
