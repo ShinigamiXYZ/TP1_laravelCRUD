@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', '{{ $student->name }}')
+@section('title', 'student')
 @section('content')
 @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show text-center" role="alert">

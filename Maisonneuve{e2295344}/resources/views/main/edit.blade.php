@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'student')
+@section('title', 'edit')
 @section('content')
 <div class="text-center mt-2"><a href="{{route('main.show', $student -> id )}}" class="btn btn-success">Retour</a></div>
 <div class="container py-5">
