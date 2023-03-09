@@ -14,7 +14,7 @@
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{ old('name') }}">
         @error('name')
-            <div class="text-danger">{{ $message }}</div>
+            <div class="text-danger">{{ $message }}</div> <!-- Affiche le message d'erreur personnaliser en lien avec la validations creer dans studentController -->
         @enderror
     </div>
 
