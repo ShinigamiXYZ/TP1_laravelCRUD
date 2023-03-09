@@ -36,14 +36,9 @@ class StudentController extends Controller
            
         ];
     // Définir les messages d'erreur personnalisés
+    // Si aucun changements -> validation preetablis dans lang/en/validation
         $messages = [
-            'name.required' => 'The name field is required.',
-            'address.required' => 'The address field is required.',
-            'phone.required' => 'The phone field is required.',
-            'email.required' => 'The email field is required.',
-            'email.unique' => 'The email address is already in use.',
-            'year_of_birth.required' => 'The year of birth field is required.',
-            'year_of_birth.integer' => 'The year of birth must be an integer.',
+            
             'year_of_birth.between' => 'your either dead or not born yet.'
         ];
     // Valider les données soumises en utilisant les règles de validation et les messages d'erreur définis précédemment.
