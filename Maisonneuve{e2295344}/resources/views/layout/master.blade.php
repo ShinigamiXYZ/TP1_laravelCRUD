@@ -15,10 +15,8 @@
   
         
   <div class="text-start px-md-3">
-    <h1 >New house chat</h1>
+    <a href="/" class='text-white text-decoration-none '><h1 >New house chat</h1></a>
   </div>
-
-
 </header>
 
     @yield('content')
