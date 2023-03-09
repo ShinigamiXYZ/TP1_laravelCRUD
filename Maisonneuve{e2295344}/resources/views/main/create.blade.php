@@ -12,7 +12,7 @@
 
         <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{ old('name') }}">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{ old('name') }}"> <!-- Si la page est rediriger apres erreur , old va garder l'informations entre par l'utilisateurs -->
         @error('name')
             <div class="text-danger">{{ $message }}</div> <!-- Affiche le message d'erreur personnaliser en lien avec la validations creer dans studentController -->
         @enderror
