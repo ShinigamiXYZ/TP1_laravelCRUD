@@ -11,6 +11,15 @@
     </head>
 
     <body>
+    <header class="bg-primary text-white py-3">
+  
+        
+  <div class="text-start px-md-3">
+    <h1 >New house chat</h1>
+  </div>
+
+
+</header>
 
     @yield('content')
 
