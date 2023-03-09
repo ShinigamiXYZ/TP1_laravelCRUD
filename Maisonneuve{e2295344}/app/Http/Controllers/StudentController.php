@@ -30,7 +30,7 @@ class StudentController extends Controller
             'address' => 'required|string|max:255',
             'phone' => 'required|string|max:60',
             'email' => 'required|string|email|max:255|unique:students',
-            'year_of_birth' => 'required|integer',
+            'year_of_birth' => 'required|integer|between:1900,2023'
            
         ];
     
@@ -42,7 +42,7 @@ class StudentController extends Controller
             'email.unique' => 'The email address is already in use.',
             'year_of_birth.required' => 'The year of birth field is required.',
             'year_of_birth.integer' => 'The year of birth must be an integer.',
-            'town_id.required' => 'The town field is required.'
+            'year_of_birth.between' => 'your either dead or not born yet.'
         ];
     
         $validatedData = $request->validate($validations, $messages);
