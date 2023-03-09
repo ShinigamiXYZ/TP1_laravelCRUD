@@ -11,7 +11,7 @@ class StudentController extends Controller
     {
         
         $student= Student::all();
-        $student= Student::simplePaginate(15);
+        $student= Student::simplePaginate(15);  // Paginer les résultats récupérés, avec 15 enregistrements par page
         return view('main.index', ['studentList' => $student]);
         
     }
@@ -23,8 +23,10 @@ class StudentController extends Controller
     }
     public function store(Request $request)
     {
+            // Récupérer les données soumises par l'utilisateur pour les champs spécifiés
         $data = $request->only(['name', 'address', 'phone', 'email', 'year_of_birth', 'town_id']);
     
+       // Définir les règles de validation à appliquer
         $validations = [
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
@@ -33,7 +35,7 @@ class StudentController extends Controller
             'year_of_birth' => 'required|integer|between:1900,2023'
            
         ];
-    
+    // Définir les messages d'erreur personnalisés
         $messages = [
             'name.required' => 'The name field is required.',
             'address.required' => 'The address field is required.',
@@ -44,7 +46,7 @@ class StudentController extends Controller
             'year_of_birth.integer' => 'The year of birth must be an integer.',
             'year_of_birth.between' => 'your either dead or not born yet.'
         ];
-    
+    // Valider les données soumises en utilisant les règles de validation et les messages d'erreur définis précédemment.
         $validatedData = $request->validate($validations, $messages);
     
         $student = Student::create($data);
@@ -64,7 +66,7 @@ class StudentController extends Controller
 
     public function edit($studentId){
         $towns = Town::all();
-        $student = Student::findOrFail($studentId);
+        $student = Student::findOrFail($studentId); 
         return view('main.edit', compact('student','towns')); // == ['student' => $student]); Si on veu que la clef soit identique a la variable compact est une variation
 
     }
@@ -75,7 +77,7 @@ class StudentController extends Controller
         $student = Student::findOrFail($request->id);
      
         $student->update($request->only(['name', 'address' , 'phone', 'email', 'year_of_birth', 'town_id']));
-        /* voir pk adress de passe pas. */
+       
         return redirect(route('main.show', $request->id))->withSuccess('Informations mis a jour');
        
         
