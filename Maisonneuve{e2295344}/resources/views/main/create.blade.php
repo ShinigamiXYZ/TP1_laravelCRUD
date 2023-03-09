@@ -11,36 +11,55 @@
         @method('PUT')
 
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
-        </div>
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="{{ old('name') }}">
+        @error('name')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
 
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address">
-        </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address" value="{{ old('address') }}">
+        @error('address')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
 
-        <div class="form-group">
-          <label for="phone">Phone:</label>
-          <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
-        </div>
+    <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" value="{{ old('phone') }}">
+        @error('phone')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
 
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
-        </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" value="{{ old('email') }}">
+        @error('email')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
 
-        <div class="form-group">
-          <label for="year_of_birth">Year of Birth:</label>
-          <input type="text" class="form-control" id="year_of_birth" name="year_of_birth" placeholder="Enter your year of birth">
-        </div>
-        <div class="form-group">
+    <div class="form-group">
+        <label for="year_of_birth">Year of Birth:</label>
+        <input type="text" class="form-control" id="year_of_birth" name="year_of_birth" placeholder="Enter your year of birth" value="{{ old('year_of_birth') }}">
+@error('year_of_birth')
+<div class="text-danger">{{ $message }}</div>
+@enderror
+</div>
+<div class="form-group">
     <label for="town_id">Select Town:</label>
     <select class="form-control" id="town_id" name="town_id">
         @foreach($towns as $town)
-            <option value="{{ $town->id }}">{{ $town->name }}</option>
+            <option value="{{ $town->id }}" {{ old('town_id') == $town->id ? 'selected' : '' }}>{{ $town->name }}</option>
         @endforeach
     </select>
+    @error('town_id')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
 
 
 

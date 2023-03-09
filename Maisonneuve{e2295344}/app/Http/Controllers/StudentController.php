@@ -21,16 +21,36 @@ class StudentController extends Controller
 
         return view('main.create', ['towns'=>$towns]);
     }
-    public function store(Request $request){
-      
-        $data = $request->only(['name', 'address' , 'phone', 'email', 'year_of_birth', 'town_id']);
-        /* Ajout de validation + tard */
-     
+    public function store(Request $request)
+    {
+        $data = $request->only(['name', 'address', 'phone', 'email', 'year_of_birth', 'town_id']);
+    
+        $validations = [
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:60',
+            'email' => 'required|string|email|max:255|unique:students',
+            'year_of_birth' => 'required|integer',
+           
+        ];
+    
+        $messages = [
+            'name.required' => 'The name field is required.',
+            'address.required' => 'The address field is required.',
+            'phone.required' => 'The phone field is required.',
+            'email.required' => 'The email field is required.',
+            'email.unique' => 'The email address is already in use.',
+            'year_of_birth.required' => 'The year of birth field is required.',
+            'year_of_birth.integer' => 'The year of birth must be an integer.',
+            'town_id.required' => 'The town field is required.'
+        ];
+    
+        $validatedData = $request->validate($validations, $messages);
+    
         $student = Student::create($data);
     
         return redirect(route('main.show', $student->id))->withSuccess('Student created successfully.'); 
     }
-
 
 
 
